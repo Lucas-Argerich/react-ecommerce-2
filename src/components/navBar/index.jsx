@@ -1,6 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
+import CartIcon from "./cartIcon";
 
 const Header = styled.header`
   height: 80px;
@@ -64,8 +65,9 @@ export default function NavBar() {
           </Li>
         </Ul>
       </Nav>
-      {/* <Cart>
-      </Cart> */}
+      <Link to="/cart">
+        <CartIcon />
+      </Link>
     </Header>
   );
 }
