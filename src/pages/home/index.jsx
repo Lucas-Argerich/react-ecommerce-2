@@ -1,7 +1,8 @@
 import React from 'react'
+import StyledTemplate from '../styledTemplate'
 
 export default function Home() {
   return (
-    <main>Home</main>
+    <StyledTemplate>Home</StyledTemplate>
   )
 }

@@ -1,7 +1,8 @@
 import React from 'react'
+import StyledTemplate from '../styledTemplate'
 
 export default function About() {
   return (
-    <div>About</div>
+    <StyledTemplate>About</StyledTemplate>
   )
 }
