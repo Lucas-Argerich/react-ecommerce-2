@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import CartIcon from "./cartIcon";
+import MenuButton from "./menuButton";
 
 const Header = styled.header`
   height: 80px;
-  box-shadow: 0px 4px 8px rgba(141, 141, 141, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,6 +13,7 @@ const Header = styled.header`
 
   @media (min-width: 768px) {
     padding: 0 40px;
+    box-shadow: 0px 4px 8px rgba(141, 141, 141, 0.2);
   }
 
   @media (min-width: 1024px) {
@@ -32,27 +33,78 @@ const Header = styled.header`
   }
 `;
 
-const Nav = styled.nav``;
+const Nav = styled.nav`
+  margin-right: auto;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: calc(100% - 40px);
+  padding: 0 20px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+  overflow: hidden;
+
+  ${({ isOpen }) => (isOpen ? "height: calc(100% - 80px);" : "height: 0;")};
+
+  @media (min-width: 768px) {
+    width: auto;
+    height: auto;
+    position: relative;
+    top: 0;
+    padding: 0;
+    display: flex;
+  }
+`;
 
 const Ul = styled.ul`
   list-style-type: none;
-  display: flex;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
 `;
 
 const Li = styled.li`
   margin-right: 100px;
+  margin-top: 20px;
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
+  font-size: 2rem;
+  font-weight: 700;
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+    font-weight: 600;
+  }
   &.active {
     color: #9381ff;
   }
 `;
 
+const CartLink = styled(Link)`
+  position: absolute;
+  right: 20px;
+  bottom: 70px;
+
+  @media (min-width: 768px) {
+    position: relative;
+    right: 0;
+    bottom: 0;
+  }
+`;
+
 export default function NavBar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Header>
-      <Nav>
+      <MenuButton onClick={() => setIsOpen(!isOpen)} isOpen={isOpen} />
+      <Nav isOpen={isOpen}>
         <Ul>
           <Li>
             <StyledNavLink to="/">Home</StyledNavLink>
@@ -65,9 +117,9 @@ export default function NavBar() {
           </Li>
         </Ul>
       </Nav>
-      <Link to="/cart">
+      <CartLink to="/cart">
         <CartIcon />
-      </Link>
+      </CartLink>
     </Header>
   );
 }
