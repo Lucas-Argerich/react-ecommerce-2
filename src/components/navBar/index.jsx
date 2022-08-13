@@ -76,6 +76,7 @@ const Li = styled.li`
 const StyledNavLink = styled(NavLink)`
   font-size: 2rem;
   font-weight: 700;
+  user-select: none;
 
   @media (min-width: 768px) {
     font-size: 1rem;
@@ -90,6 +91,7 @@ const CartLink = styled(Link)`
   position: absolute;
   right: 20px;
   bottom: 70px;
+  user-select: none;
 
   @media (min-width: 768px) {
     position: relative;
