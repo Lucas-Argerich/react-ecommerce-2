@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Main = styled.main`
   flex-grow: 1;
-  margin: 0 20px;
+  margin: 0 25px;
 
   @media (min-width: 768px) {
     margin: 0 40px;

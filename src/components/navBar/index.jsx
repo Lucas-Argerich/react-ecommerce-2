@@ -9,7 +9,7 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 25px;
 
   @media (min-width: 768px) {
     padding: 0 40px;
